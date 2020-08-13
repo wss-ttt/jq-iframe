@@ -32,6 +32,10 @@ ul,li {
 
 a {
   text-decoration: none;
+  color: #000;
+}
+a:hover {
+  text-decoration: none;
 }
 
 html, body {
