@@ -16,6 +16,14 @@
     width: 220px;
     z-index: 2001;
     height: 100%;
+    .logo {
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      color: #fff;
+    }
     ul.menu {
       li.level1 {
         &.active {
