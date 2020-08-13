@@ -17,6 +17,7 @@
   <body>
     <div class="wrapper">
       <div class="navbar">
+        <div  class="logo">后台管理系统</div>
         <ul class="menu">
           <li class="level1">
             <a href="#">首页</a>
@@ -101,24 +102,20 @@
     </div>
     <script src="js/jquery.js"></script>
     <script>
+      // 1.菜单的折叠和展开
       $('.fold-btn').toggle(function() {
         $('.wrapper').addClass('fold')
       }, function() {
         $('.wrapper').removeClass('fold')
       })
 
-      $('#test').click(function() {
-        $('.test').slideToggle()
-      })
-
-      // 左侧菜单
+      // 2.左侧菜单
       $('.navbar .menu .level1').click(function() {
         // 1.样式的tab切换
         $(this).addClass('active').siblings().removeClass('active')
         // 2.二级菜单的tab切换显示
         $(this).find('.level2').slideToggle()
         $(this).siblings().find('.level2').slideUp()
-
       })
     </script>
   </body>
