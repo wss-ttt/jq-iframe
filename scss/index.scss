@@ -54,34 +54,36 @@
     }
     ul.menu {
       // 一级菜单的样式
-      li.level1 {
+      >li.level1 {
         &.active {
+          // 整个二级区域背景色都改变
+          background: #293846;
           > a {
-            background: #0f4679;
+            color: #fff;
             >span.arrow {
               // 只需要旋转箭头即可
-              transform: rotate(-90deg)
+              transform: rotate(-90deg);
+              border-right-color: #fff;
             }
           }
         }
         &:hover {
           > a {
-            background-color: #326ea5;
+            background-color: #293846;
+            color: #fff;
+            >span.arrow {
+              border-right-color: #fff;
+            }
           }
         }
         // 二级菜单的样式
         ul.level2 {
           display: none;
           padding-left: 15px;
-          li {
-            &.active {
-              >a {
-                background: #0f4679;
-              }
-            }
-            &:hover {
-              >a {
-                background-color: #326ea5;
+          >li {
+            >a {
+              &:hover {
+                color: #fff;
               }
             }
           }
@@ -91,7 +93,7 @@
       a {
         display: flex;
         align-items: center;
-        color: #fff;
+        color: #a7b1c2;
         height: 46px;
         padding: 0 15px;
         .nav-label {
@@ -107,7 +109,7 @@
       .arrow {
         width: 0;
         height: 0;
-        border-right: 8px solid #fff;
+        border-right: 8px solid #a7b1c2;
         border-top: 8px solid transparent;
         border-bottom: 8px solid transparent;
         transition: all .3s;

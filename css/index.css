@@ -42,29 +42,34 @@
 .wrapper .navbar .logo .logo-brand {
   display: none;
 }
-.wrapper .navbar ul.menu li.level1.active > a {
-  background: #0f4679;
+.wrapper .navbar ul.menu > li.level1.active {
+  background: #293846;
 }
-.wrapper .navbar ul.menu li.level1.active > a > span.arrow {
+.wrapper .navbar ul.menu > li.level1.active > a {
+  color: #fff;
+}
+.wrapper .navbar ul.menu > li.level1.active > a > span.arrow {
   transform: rotate(-90deg);
+  border-right-color: #fff;
 }
-.wrapper .navbar ul.menu li.level1:hover > a {
-  background-color: #326ea5;
+.wrapper .navbar ul.menu > li.level1:hover > a {
+  background-color: #293846;
+  color: #fff;
 }
-.wrapper .navbar ul.menu li.level1 ul.level2 {
+.wrapper .navbar ul.menu > li.level1:hover > a > span.arrow {
+  border-right-color: #fff;
+}
+.wrapper .navbar ul.menu > li.level1 ul.level2 {
   display: none;
   padding-left: 15px;
 }
-.wrapper .navbar ul.menu li.level1 ul.level2 li.active > a {
-  background: #0f4679;
-}
-.wrapper .navbar ul.menu li.level1 ul.level2 li:hover > a {
-  background-color: #326ea5;
+.wrapper .navbar ul.menu > li.level1 ul.level2 > li > a:hover {
+  color: #fff;
 }
 .wrapper .navbar ul.menu a {
   display: flex;
   align-items: center;
-  color: #fff;
+  color: #a7b1c2;
   height: 46px;
   padding: 0 15px;
 }
@@ -77,7 +82,7 @@
 .wrapper .navbar ul.menu .arrow {
   width: 0;
   height: 0;
-  border-right: 8px solid #fff;
+  border-right: 8px solid #a7b1c2;
   border-top: 8px solid transparent;
   border-bottom: 8px solid transparent;
   transition: all .3s;
