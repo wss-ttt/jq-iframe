@@ -173,6 +173,14 @@
         // 3.其他的菜单的二级菜单折叠(也就是只会保留一个二级菜单时展开的)
         $(this).parent().siblings().find('.level2').slideUp()
       })
+
+      // 3.通过遍历给菜单向添加data-index
+      
+      $('.menu-item').each(function(index,value) {
+        if(!$(this).attr('data-index')) {
+          $(this).attr('data-index', index)
+        }
+      })
     </script>
   </body>
 </html>
