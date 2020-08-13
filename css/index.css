@@ -66,6 +66,9 @@
 .wrapper .navbar ul.menu > li.level1 ul.level2 > li > a:hover {
   color: #fff;
 }
+.wrapper .navbar ul.menu > li.level1 ul.level2 > li > a:focus {
+  color: #fff;
+}
 .wrapper .navbar ul.menu a {
   display: flex;
   align-items: center;
