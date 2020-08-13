@@ -7,6 +7,9 @@
 .wrapper.fold .navbar {
   width: 70px;
 }
+.wrapper.fold .navbar ul.menu li a {
+  justify-content: center;
+}
 .wrapper.fold .navbar ul.menu li a span {
   display: none;
 }
