@@ -6,10 +6,65 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/global.css" />
     <link rel="stylesheet" href="css/index.css" />
+    <style>
+      .test {
+        width: 100px;
+        height: 300px;
+        background: goldenrod;
+      }
+    </style>
   </head>
   <body>
     <div class="wrapper">
-      <div class="navbar"></div>
+      <div class="navbar">
+        <ul class="menu">
+          <li class="level1">
+            <a href="#">首页</a>
+          </li>
+          <li class="level1">
+            <a href="#">系统管理</a>
+            <ul class="level2">
+              <li>
+                <a href="#">用户管理</a>
+              </li>
+              <li>
+                <a href="#">角色管理</a>
+              </li>
+              <li>
+                <a href="#">部门管理</a>
+              </li>
+            </ul>
+          </li>
+          <li class="level1">
+            <a href="#">系统监控</a>
+            <ul class="level2">
+              <li>
+                <a href="#">在线用户</a>
+              </li>
+              <li>
+                <a href="#">定时任务</a>
+              </li>
+              <li>
+                <a href="#">数据监控</a>
+              </li>
+            </ul>
+          </li>
+          <li class="level1">
+            <a href="#">系统工具</a>
+            <ul class="level2">
+              <li>
+                <a href="#">表单构建</a>
+              </li>
+              <li>
+                <a href="#">代码生成</a>
+              </li>
+              <li>
+                <a href="#">系统接口</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
       <div class="page-wrapper">
         <div class="header">
           <div class="fold-btn">
@@ -50,6 +105,20 @@
         $('.wrapper').addClass('fold')
       }, function() {
         $('.wrapper').removeClass('fold')
+      })
+
+      $('#test').click(function() {
+        $('.test').slideToggle()
+      })
+
+      // 左侧菜单
+      $('.navbar .menu .level1').click(function() {
+        // 1.样式的tab切换
+        $(this).addClass('active').siblings().removeClass('active')
+        // 2.二级菜单的tab切换显示
+        $(this).find('.level2').slideToggle()
+        $(this).siblings().find('.level2').slideUp()
+
       })
     </script>
   </body>
