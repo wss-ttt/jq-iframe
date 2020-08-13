@@ -6,6 +6,16 @@
   &.fold {
     .navbar {
       width: 70px;
+      ul.menu {
+        li {
+          a {
+            // 当菜单折叠的后，名称和箭头需要隐藏掉
+            span {
+              display: none;
+            }
+          }
+        }
+      }
     }
     .page-wrapper {
       margin: 0 0 0 70px;
