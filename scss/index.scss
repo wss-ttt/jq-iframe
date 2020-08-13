@@ -68,6 +68,10 @@
         &.active {
           > a {
             background: #0f4679;
+            >span.arrow {
+              // 只需要旋转箭头即可
+              transform: rotate(-90deg)
+            }
           }
         }
         &:hover {
@@ -88,20 +92,15 @@
         padding: 0 15px;
         // border: 1px solid red;
       }
-      // 箭头样式(向左)
-      .arrow-left {
+      // 箭头样式
+      // tips: 001-此处箭头不需要写两个类名，只需要写一个即可， 只需要旋转箭头即可
+      .arrow {
         width: 0;
         height: 0;
         border-right: 8px solid #fff;
         border-top: 8px solid transparent;
         border-bottom: 8px solid transparent;
-      }
-      .arrow-down {
-        width: 0;
-        height: 0;
-        border-right: 8px solid transparent;
-        border-left: 8px solid transparent;
-        border-top: 8px solid #fff;
+        transition: all .3s;
       }
     }
   }

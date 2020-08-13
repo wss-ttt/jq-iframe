@@ -55,6 +55,9 @@
 .wrapper .navbar ul.menu li.level1.active > a {
   background: #0f4679;
 }
+.wrapper .navbar ul.menu li.level1.active > a > span.arrow {
+  transform: rotate(-90deg);
+}
 .wrapper .navbar ul.menu li.level1:hover > a {
   background-color: #326ea5;
 }
@@ -69,19 +72,13 @@
   height: 46px;
   padding: 0 15px;
 }
-.wrapper .navbar ul.menu .arrow-left {
+.wrapper .navbar ul.menu .arrow {
   width: 0;
   height: 0;
   border-right: 8px solid #fff;
   border-top: 8px solid transparent;
   border-bottom: 8px solid transparent;
-}
-.wrapper .navbar ul.menu .arrow-down {
-  width: 0;
-  height: 0;
-  border-right: 8px solid transparent;
-  border-left: 8px solid transparent;
-  border-top: 8px solid #fff;
+  transition: all .3s;
 }
 .wrapper .page-wrapper {
   height: 100%;
