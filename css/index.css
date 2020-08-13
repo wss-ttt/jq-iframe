@@ -24,6 +24,16 @@
   font-size: 20px;
   color: #fff;
 }
+.wrapper .navbar ul.menu li.level1 a {
+  display: flex;
+  align-items: center;
+}
+.wrapper .navbar ul.menu li.level1 a .nav-label {
+  margin-left: 5px;
+}
+.wrapper .navbar ul.menu li.level1 a .arrow {
+  margin-left: auto;
+}
 .wrapper .navbar ul.menu li.level1.active > a {
   background: #0f4679;
 }
@@ -40,6 +50,20 @@
   align-items: center;
   height: 46px;
   padding: 0 15px;
+}
+.wrapper .navbar ul.menu .arrow-left {
+  width: 0;
+  height: 0;
+  border-right: 8px solid #fff;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+}
+.wrapper .navbar ul.menu .arrow-down {
+  width: 0;
+  height: 0;
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
+  border-top: 8px solid #fff;
 }
 .wrapper .page-wrapper {
   height: 100%;

@@ -8,7 +8,7 @@
       width: 70px;
     }
     .page-wrapper {
-      margin:  0 0 0 70px;
+      margin: 0 0 0 70px;
     }
   }
   .navbar {
@@ -26,13 +26,25 @@
     }
     ul.menu {
       li.level1 {
+        // 每个菜单项的样式
+        a {
+          display: flex;
+          align-items: center;
+          .nav-label {
+            margin-left: 5px;
+          }
+          .arrow {
+            // 把箭头放在右边
+            margin-left: auto;
+          }
+        }
         &.active {
-          >a {
+          > a {
             background: #0f4679;
           }
         }
         &:hover {
-          >a {
+          > a {
             background-color: #326ea5;
           }
         }
@@ -49,11 +61,26 @@
         padding: 0 15px;
         // border: 1px solid red;
       }
+      // 箭头样式(向左)
+      .arrow-left {
+        width: 0;
+        height: 0;
+        border-right: 8px solid #fff;
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+      }
+      .arrow-down {
+        width: 0;
+        height: 0;
+        border-right: 8px solid transparent;
+        border-left: 8px solid transparent;
+        border-top: 8px solid #fff;
+      }
     }
   }
   .page-wrapper {
     height: 100%;
-    margin:  0 0 0 220px;
+    margin: 0 0 0 220px;
     background: #fb3;
     .header {
       height: 50px;
@@ -84,7 +111,7 @@
         display: flex;
         align-items: center;
         float: right;
-        >li {
+        > li {
           float: left;
           margin-left: 15px;
           padding: 0 5px;
@@ -117,7 +144,7 @@
               background: #fff;
               color: #333;
               box-shadow: 0 0 3px rgba(86, 96, 117, 0.3);
-              >li {
+              > li {
                 text-align: center;
                 padding: 0 10px;
                 border-bottom: 1px solid #ccc;
