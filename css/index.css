@@ -42,16 +42,6 @@
 .wrapper .navbar .logo .logo-brand {
   display: none;
 }
-.wrapper .navbar ul.menu li.level1 a {
-  display: flex;
-  align-items: center;
-}
-.wrapper .navbar ul.menu li.level1 a .nav-label {
-  margin-left: 5px;
-}
-.wrapper .navbar ul.menu li.level1 a .arrow {
-  margin-left: auto;
-}
 .wrapper .navbar ul.menu li.level1.active > a {
   background: #0f4679;
 }
@@ -66,11 +56,17 @@
   padding-left: 15px;
 }
 .wrapper .navbar ul.menu a {
-  color: #fff;
   display: flex;
   align-items: center;
+  color: #fff;
   height: 46px;
   padding: 0 15px;
+}
+.wrapper .navbar ul.menu a .nav-label {
+  margin-left: 5px;
+}
+.wrapper .navbar ul.menu a .arrow {
+  margin-left: auto;
 }
 .wrapper .navbar ul.menu .arrow {
   width: 0;

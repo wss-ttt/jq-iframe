@@ -52,19 +52,8 @@
       }
     }
     ul.menu {
+      // 一级菜单的样式
       li.level1 {
-        // 每个菜单项的样式
-        a {
-          display: flex;
-          align-items: center;
-          .nav-label {
-            margin-left: 5px;
-          }
-          .arrow {
-            // 把箭头放在右边
-            margin-left: auto;
-          }
-        }
         &.active {
           > a {
             background: #0f4679;
@@ -79,18 +68,26 @@
             background-color: #326ea5;
           }
         }
+        // 二级菜单的样式
         ul.level2 {
           display: none;
           padding-left: 15px;
         }
       }
+      // 每个菜单项的样式(包括目录和菜单)
       a {
-        color: #fff;
         display: flex;
         align-items: center;
+        color: #fff;
         height: 46px;
         padding: 0 15px;
-        // border: 1px solid red;
+        .nav-label {
+          margin-left: 5px;
+        }
+        .arrow {
+          // 把箭头放在右边
+          margin-left: auto;
+        }
       }
       // 箭头样式
       // tips: 001-此处箭头不需要写两个类名，只需要写一个即可， 只需要旋转箭头即可
