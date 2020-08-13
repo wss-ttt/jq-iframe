@@ -3,9 +3,18 @@
   height: 100%;
   overflow-x: hidden;
   background-color: #2f4050;
+  // 此处是菜单折叠后的样式
   &.fold {
     .navbar {
       width: 70px;
+      .logo {
+        .logo-txt {
+          display: none;
+        }
+        .logo-brand {
+          display: block;
+        }
+      }
       ul.menu {
         li {
           a {
@@ -35,6 +44,12 @@
       align-items: center;
       font-size: 20px;
       color: #fff;
+      .logo-txt {
+        display: block;
+      }
+      .logo-brand {
+        display: none;
+      }
     }
     ul.menu {
       li.level1 {

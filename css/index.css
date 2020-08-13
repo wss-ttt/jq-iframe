@@ -7,6 +7,12 @@
 .wrapper.fold .navbar {
   width: 70px;
 }
+.wrapper.fold .navbar .logo .logo-txt {
+  display: none;
+}
+.wrapper.fold .navbar .logo .logo-brand {
+  display: block;
+}
 .wrapper.fold .navbar ul.menu li a {
   justify-content: center;
 }
@@ -29,6 +35,12 @@
   align-items: center;
   font-size: 20px;
   color: #fff;
+}
+.wrapper .navbar .logo .logo-txt {
+  display: block;
+}
+.wrapper .navbar .logo .logo-brand {
+  display: none;
 }
 .wrapper .navbar ul.menu li.level1 a {
   display: flex;
