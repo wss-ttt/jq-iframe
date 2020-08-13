@@ -19,11 +19,11 @@
     <div class="wrapper">
       <div class="navbar">
         <div class="logo">
-          <>span class="logo-txt">后台管理系统</>
+          <span class="logo-txt">后台管理系统</span>
           <span class="logo-brand">
             WSS
           </span>
-        </div
+        </div>
         <ul class="menu">
           <li class="level1">
             <a href="#" class="menu-item">
@@ -170,7 +170,10 @@
       // 不能直接选中 .level1 ,否则点击.level的子项菜单也就折叠
       $('.navbar .menu .level1 > a').click(function () {
         // 1.当前菜单高亮，其他不高亮
-        $(this).parent().addClass('active').siblings().removeClass('active')
+        // $(this).parent().addClass('active').siblings().removeClass('active')
+
+        $(this).parent().toggleClass('active').siblings().removeClass('active')
+
 
         // 2.点击当前菜单的二级菜单展开或者折叠
         $(this).next().slideToggle()
