@@ -16,7 +16,6 @@
     width: 220px;
     z-index: 2001;
     height: 100%;
-    padding: 0 15px;
     ul.menu {
       li.level1 {
         &.active {
@@ -39,6 +38,7 @@
         display: flex;
         align-items: center;
         height: 46px;
+        padding: 0 15px;
         // border: 1px solid red;
       }
     }
