@@ -72,6 +72,18 @@
         ul.level2 {
           display: none;
           padding-left: 15px;
+          li {
+            &.active {
+              >a {
+                background: #0f4679;
+              }
+            }
+            &:hover {
+              >a {
+                background-color: #326ea5;
+              }
+            }
+          }
         }
       }
       // 每个菜单项的样式(包括目录和菜单)

@@ -55,6 +55,12 @@
   display: none;
   padding-left: 15px;
 }
+.wrapper .navbar ul.menu li.level1 ul.level2 li.active > a {
+  background: #0f4679;
+}
+.wrapper .navbar ul.menu li.level1 ul.level2 li:hover > a {
+  background-color: #326ea5;
+}
 .wrapper .navbar ul.menu a {
   display: flex;
   align-items: center;
