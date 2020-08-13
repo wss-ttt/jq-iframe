@@ -15,7 +15,23 @@
   width: 220px;
   z-index: 2001;
   height: 100%;
-  background: #ccc;
+  padding: 0 15px;
+}
+.wrapper .navbar ul.menu li.level1.active > a {
+  background: #0f4679;
+}
+.wrapper .navbar ul.menu li.level1:hover > a {
+  background-color: #326ea5;
+}
+.wrapper .navbar ul.menu li.level1 ul.level2 {
+  display: none;
+  padding-left: 15px;
+}
+.wrapper .navbar ul.menu a {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  height: 46px;
 }
 .wrapper .page-wrapper {
   height: 100%;
