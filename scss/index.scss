@@ -16,7 +16,32 @@
     width: 220px;
     z-index: 2001;
     height: 100%;
-    background: #ccc;
+    padding: 0 15px;
+    ul.menu {
+      li.level1 {
+        &.active {
+          >a {
+            background: #0f4679;
+          }
+        }
+        &:hover {
+          >a {
+            background-color: #326ea5;
+          }
+        }
+        ul.level2 {
+          display: none;
+          padding-left: 15px;
+        }
+      }
+      a {
+        color: #fff;
+        display: flex;
+        align-items: center;
+        height: 46px;
+        // border: 1px solid red;
+      }
+    }
   }
   .page-wrapper {
     height: 100%;
