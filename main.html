@@ -207,6 +207,8 @@
         // 1.需要判断tab是否已经存在，如果存在了就不需要创建了
         $('.menu-tab').each(function() {
           if($(this).data('id') === href) {
+            // 让当前的tab高亮
+            $(this).addClass('active').siblings().removeClass('active')
             flag = false
             return false // 跳出循环
           }
@@ -215,6 +217,8 @@
         // 2.需要创建tab
         if(flag) {
           let str = `<a href="javascript:;" class="active menu-tab" data-id="${href}">${tabName}<i class="fa fa-times-circle"></i></a>`
+          // 去掉其他tab的active样式
+          $('.menu-tab').removeClass('active')
           $('.content-tabs .tabs-inner').append(str)
         }
 
