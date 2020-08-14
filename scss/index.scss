@@ -1,4 +1,11 @@
 @charset "utf-8";
+@mixin center {
+ display: flex; 
+ justify-content: center;
+ align-items: center;
+}
+
+
 .wrapper {
   width: 100%;
   height: 100%;
@@ -207,6 +214,21 @@
       position: relative;
       height: 40px;
       background: #fafafa;
+      .tabs-inner {
+        height: 100%;
+        display: flex;
+        .menu-tab {
+          padding: 0 15px;
+          @include center();
+          flex-shrink: 0; // 防止子元素被压缩
+          border-right: 1px solid #eee;
+          > i {
+            color: #ccc;
+            margin-left: 2px;
+            font-size: 13px;
+          }
+        }
+      }
     }
     .main-content {
       height: calc(100% - 50px - 40px - 40px);

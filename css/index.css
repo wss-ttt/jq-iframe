@@ -178,6 +178,23 @@
   height: 40px;
   background: #fafafa;
 }
+.wrapper .page-wrapper .content-tabs .tabs-inner {
+  height: 100%;
+  display: flex;
+}
+.wrapper .page-wrapper .content-tabs .tabs-inner .menu-tab {
+  padding: 0 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-right: 1px solid #eee;
+}
+.wrapper .page-wrapper .content-tabs .tabs-inner .menu-tab > i {
+  color: #ccc;
+  margin-left: 2px;
+  font-size: 13px;
+}
 .wrapper .page-wrapper .main-content {
   height: calc(100% - 50px - 40px - 40px);
   background: #1acd7e;
