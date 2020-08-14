@@ -217,15 +217,19 @@
       .tabs-inner {
         height: 100%;
         display: flex;
-        .menu-tab {
+        a.menu-tab {
           padding: 0 15px;
           @include center();
           flex-shrink: 0; // 防止子元素被压缩
           border-right: 1px solid #eee;
           > i {
             color: #ccc;
-            margin-left: 2px;
+            margin-left: 4px;
             font-size: 13px;
+          }
+          &.active {
+            background: #eaedf1;
+            color: #23508e;
           }
         }
       }
