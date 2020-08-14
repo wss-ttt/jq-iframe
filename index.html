@@ -26,7 +26,7 @@
         </div>
         <ul class="menu">
           <li class="level1">
-            <a href="#" class="menu-item">
+            <a href="home.html" class="menu-item">
               <i class="fa fa-gear"></i>
               <span class="nav-label">首页</span>
             </a>
@@ -39,19 +39,19 @@
             </a>
             <ul class="level2">
               <li>
-                <a href="#" class="menu-item">
+                <a href="system/user.html" class="menu-item">
                   <i class="fa fa-address-card"></i>
                   <span class="nav-label">用户管理</span>
                 </a>
               </li>
               <li>
-                <a href="#" class="menu-item">
+                <a href="system/role.html" class="menu-item">
                   <i class="fa fa-address-card"></i>
                   <span class="nav-label">角色管理</span>
                 </a>
               </li>
               <li>
-                <a href="#" class="menu-item">
+                <a href="system/dept.html" class="menu-item">
                   <i class="fa fa-address-card"></i>
                   <span class="nav-label">部门管理</span>
                 </a>
@@ -197,10 +197,29 @@
 
       // 4.创建tab选项卡
       function creataTab() {
-        let flag = true
+        let flag = true // true: 需要创建 false: 不需要创建(之前已经创建好了)
         let tabName = $.trim($(this).text()) // 获取点击的菜单名称
-        let str = `<a href="javascript:;" class="active menu-tab">${tabName}<i class="fa fa-times-circle"></i></a>`
-        $('.content-tabs .tabs-inner').append(str)
+        let href = $(this).attr('href') // 获取地址
+        let index = $(this).data('index') // 获取data-index值
+        
+        if(!href) return // 如果不存在链接地址，直接返回
+        
+        // 1.需要判断tab是否已经存在，如果存在了就不需要创建了
+        $('.menu-tab').each(function() {
+          if($(this).data('id') === href) {
+            flag = false
+            return false // 跳出循环
+          }
+        })
+
+        // 2.需要创建tab
+        if(flag) {
+          let str = `<a href="javascript:;" class="active menu-tab" data-id="${href}">${tabName}<i class="fa fa-times-circle"></i></a>`
+          $('.content-tabs .tabs-inner').append(str)
+        }
+
+        // 3.防止a链接跳转
+        return false
       }
 
       // 5.给左侧菜单向添加单击事件
