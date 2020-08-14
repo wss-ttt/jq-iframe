@@ -1,11 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  main
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <style>
+      .test {
+        width: 100px;
+        height: 300px;
+        background: goldenrod;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="navbar">
+        <div class="logo">
+          <span class="logo-txt">后台管理系统</span>
+          <span class="logo-brand">
+            WSS
+          </span>
+        </div>
+        <ul class="menu">
+          <li class="level1">
+            <a href="index.html" class="menu-item">
+              <i class="fa fa-gear"></i>
+              <span class="nav-label">首页</span>
+            </a>
+          </li>
+          <li class="level1">
+            <a href="#">
+              <i class="fa fa-video-camera"></i>
+              <span class="nav-label">系统管理</span>
+              <span class="arrow arrow-left"></span>
+            </a>
+            <ul class="level2">
+              <li>
+                <a href="system/user.html" class="menu-item">
+                  <i class="fa fa-address-card"></i>
+                  <span class="nav-label">用户管理</span>
+                </a>
+              </li>
+              <li>
+                <a href="system/role.html" class="menu-item">
+                  <i class="fa fa-address-card"></i>
+                  <span class="nav-label">角色管理</span>
+                </a>
+              </li>
+              <li>
+                <a href="system/dept.html" class="menu-item">
+                  <i class="fa fa-address-card"></i>
+                  <span class="nav-label">部门管理</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="level1">
+            <a href="#">
+              <i class="fa fa-video-camera"></i>
+              <span class="nav-label">系统监控</span>
+              <span class="arrow arrow-left"></span>
+            </a>
+            <ul class="level2">
+              <li>
+                <a href="#" class="menu-item">
+                  <i class="fa fa-address-card"></i>
+                  <span class="nav-label">在线用户</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="menu-item">
+                  <i class="fa fa-address-card"></i>
+                  <span class="nav-label">定时任务</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="menu-item">
+                  <i class="fa fa-address-card"></i>
+                  <span class="nav-label">数据监控</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="level1">
+            <a href="#">
+              <i class="fa fa-video-camera"></i>
+              <span class="nav-label">系统工具</span>
+              <span class="arrow arrow-left"></span>
+            </a>
+            <ul class="level2">
+              <li>
+                <a href="#" class="menu-item">
+                  <i class="fa fa-address-card"></i>
+                  <span class="nav-label">表单构建</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="menu-item">
+                  <i class="fa fa-address-card"></i>
+                  <span class="nav-label">代码生成</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="menu-item">
+                  <i class="fa fa-address-card"></i>
+                  <span class="nav-label">系统接口</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="page-wrapper">
+        <div class="header">
+          <div class="fold-btn">
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </div>
+          <ul class="message">
+            <li>
+              <a href="#">使用文档</a>
+            </li>
+            <li>
+              <a href="#">全屏展示</a>
+            </li>
+            <li class="user-info">
+              <a href="#">
+                <img src="images/profile.jpg" class="user-image" alt="" />
+                <span class="user-name">admin</span>
+              </a>
+              <ul class="second">
+                <li>个人中心</li>
+                <li>修改密码</li>
+                <li>退出</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="content-tabs">
+          <div class="tabs-inner"></div>
+        </div>
+        <div class="main-content"></div>
+        <div class="footer"></div>
+      </div>
+    </div>
+    <script src="js/jquery.js"></script>
+    <script>
+      /**
+       *  注意:
+       *  1.所有的目录a标签不会有menu-item的class类名
+       *  2.所有的菜单a标签是需要menu-item的calss类名
+       *  3.点击菜单时用toggleClass
+       *  3.点击菜单时用slideToggle
+       * **/
+      // 1.菜单的折叠和展开
+      $('.fold-btn').toggle(
+        function () {
+          $('.wrapper').addClass('fold')
+        },
+        function () {
+          $('.wrapper').removeClass('fold')
+        }
+      )
+
+      // 2.左侧菜单
+      // 注意这个地方选中的是.level1 > a
+      // 不能直接选中 .level1 ,否则点击.level的子项菜单也就折叠
+      $('.navbar .menu .level1 > a').click(function () {
+        // 1.当前菜单高亮，其他不高亮
+        // $(this).parent().addClass('active').siblings().removeClass('active')
+
+        // tips: 002-这里将addClass换成toggleClass
+        $(this).parent().toggleClass('active').siblings().removeClass('active')
+
+
+        // 2.点击当前菜单的二级菜单展开或者折叠
+        $(this).next().slideToggle()
+
+        // 3.其他的菜单的二级菜单折叠(也就是只会保留一个二级菜单时展开的)
+        $(this).parent().siblings().find('.level2').slideUp()
+      })
+
+      // 3.通过遍历给菜单向添加data-index
+      
+      $('.menu-item').each(function(index,value) {
+        if(!$(this).attr('data-index')) {
+          $(this).attr('data-index', index)
+        }
+      })
+
+      // 4.创建tab选项卡
+      function creataTab() {
+        let flag = true // true: 需要创建 false: 不需要创建(之前已经创建好了)
+        let tabName = $.trim($(this).text()) // 获取点击的菜单名称
+        let href = $(this).attr('href') // 获取地址
+        let index = $(this).data('index') // 获取data-index值
+        
+        if(!href) return // 如果不存在链接地址，直接返回
+        
+        // 1.需要判断tab是否已经存在，如果存在了就不需要创建了
+        $('.menu-tab').each(function() {
+          if($(this).data('id') === href) {
+            flag = false
+            return false // 跳出循环
+          }
+        })
+
+        // 2.需要创建tab
+        if(flag) {
+          let str = `<a href="javascript:;" class="active menu-tab" data-id="${href}">${tabName}<i class="fa fa-times-circle"></i></a>`
+          $('.content-tabs .tabs-inner').append(str)
+        }
+
+        // 3.防止a链接跳转
+        return false
+      }
+
+      // 5.给左侧菜单向添加单击事件
+      $('.menu-item').on('click', creataTab)
+    </script>
+  </body>
 </html>
