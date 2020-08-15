@@ -215,6 +215,13 @@
             return false // 跳出循环
           }
         })
+        // 当前对应的iframe高亮
+        $('.main-content iframe.iframe').each(function() {
+          if($(this).data('id') === href) {
+            $(this).show().siblings().hide()
+            return false
+          }
+        })
 
         // 2.需要创建tab
         if(flag) {
