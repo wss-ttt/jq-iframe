@@ -195,6 +195,10 @@
   margin-left: 2px;
   font-size: 13px;
 }
+.wrapper .page-wrapper .content-tabs .tabs-inner .menu-tab.active {
+  color: #23508e;
+  background: #eaedf1;
+}
 .wrapper .page-wrapper .main-content {
   height: calc(100% - 50px - 40px - 40px);
   background: #1acd7e;
