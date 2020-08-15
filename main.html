@@ -250,6 +250,13 @@
           let currentId = $(this).data('id')
           // 当前高亮
           $(this).addClass('active').siblings().removeClass('active')
+          // 当前对应的iframe高亮
+          $('.main-content iframe.iframe').each(function() {
+            if($(this).data('id') === currentId) {
+              $(this).show().siblings().hide()
+              return false
+            }
+          })
         }
       }
 
@@ -264,6 +271,12 @@
           if($(this).parent().next().size()) {
             let activeId = $(this).parent().next().data('id')
             $(this).parent().next().addClass('active')
+            $('.main-content iframe.iframe').each(function() {
+              if($(this).data('id') === activeId) {
+                $(this).show().siblings().hide()
+                return false
+              }
+            })
             // 移除当前tab选项卡
             $(this).parent().get(0).remove() // 使用的是原生的remove方法进行删除
           } else {
