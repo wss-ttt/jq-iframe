@@ -239,6 +239,33 @@
       }
 
       $('.content-tabs .tabs-inner').on('click', '.menu-tab', activeTab)
+
+      // 7.关闭选项卡
+      function closeTab() {
+        let closeTabId = $(this).parent().data('id')
+        // 如果当前元素处在激活状态
+        if($(this).parent().hasClass('active')) {
+          // 如果当前元素后面有同辈元素
+          if($(this).parent().next().size()) {
+            let activeId = $(this).parent().next().data('id')
+            $(this).parent().next().addClass('active')
+            // 移除当前tab选项卡
+            $(this).parent().get(0).remove() // 使用的是原生的remove方法进行删除
+          } else {
+            // 如果当前元素的后面没有同辈元素
+            let activeId = $(this).parent().prev().data('id')
+            $(this).parent().prev().addClass('active')
+            // 移出当前选项卡
+            $(this).parent().get(0).remove() // 使用的是原生的remove方法进行删除
+          }
+          
+        } else {
+          // 如果当前元素不存在激活状态下
+          $(this).parent().get(0).remove()
+        }
+      }
+
+      $('.content-tabs .tabs-inner').on('click', '.menu-tab i', closeTab)
     </script>
   </body>
 </html>
