@@ -162,6 +162,14 @@
        *  5. tab菜单切换需要data-id,它的值取的是左侧菜单的href的值
        *  6.$().each是通过return false跳出循环
        * **/
+
+      /**
+        tab切换的地方
+        1.点击左侧菜单,menu-item进行切换,menu-tab进行切换, iframe进行切换
+        2.点击menu-tab,menu-tab进行切换,iframe进行切换
+        3.点击关闭tab, menu-tab进行切换,iframe进行切换 
+      **/
+
       // 1.菜单的折叠和展开
       $('.fold-btn').toggle(
         function () {
