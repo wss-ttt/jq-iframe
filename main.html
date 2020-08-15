@@ -222,6 +222,10 @@
           // 移除其他tab选项卡的active样式
           $('.menu-tab').removeClass('active')
           $('.content-tabs .tabs-inner').append(str)
+          // 添加选项卡对应的iframe
+          let str1 = `<iframe class="iframe" name="iframe${index}" width="100%" height="100%" frameborder="0" src="${href}" seamless></iframe>`
+          $('.main-content').find('iframe.iframe').hide()
+          $('.main-content').append(str1)
         }
 
         // 3.防止a链接跳转
