@@ -170,6 +170,12 @@
         3.点击关闭tab, menu-tab进行切换,iframe进行切换 
       **/
 
+
+      /**
+        关联关系:
+        menu-item的href - menu-tab的data-id  iframe的data-id 
+      **/
+
       // 1.菜单的折叠和展开
       $('.fold-btn').toggle(
         function () {
@@ -285,19 +291,48 @@
                 return false
               }
             })
+
             // 移除当前tab选项卡
             $(this).parent().get(0).remove() // 使用的是原生的remove方法进行删除
+            // 移除对应的iframe
+            $('.main-content iframe.iframe').each(function() {
+              if($(this).data('id') === closeTabId) {
+                $(this).remove()
+                return false
+              }
+            })
           } else {
             // 如果当前元素的后面没有同辈元素
             let activeId = $(this).parent().prev().data('id')
             $(this).parent().prev().addClass('active')
+            $('.main-content iframe.iframe').each(function() {
+              if($(this).data('id') === activeId) {
+                $(this).show().siblings().hide()
+                return false
+              }
+            })
+
             // 移出当前选项卡
             $(this).parent().get(0).remove() // 使用的是原生的remove方法进行删除
+            // 移除对应的iframe
+            $('.main-content iframe.iframe').each(function() {
+              if($(this).data('id') === closeTabId) {
+                $(this).remove()
+                return false
+              }
+            })
           }
           
         } else {
           // 如果当前元素不存在激活状态下
           $(this).parent().get(0).remove()
+          // 移除对应的iframe
+          $('.main-content iframe.iframe').each(function() {
+            if($(this).data('id') === closeTabId) {
+              $(this).remove()
+              return false
+            }
+          })
         }
       }
 
