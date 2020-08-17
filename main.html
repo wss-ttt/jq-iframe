@@ -159,13 +159,13 @@
     <script>
       /**
        *  注意:
-       *  1.所有的目录a标签不会有menu-item的class类名
-       *  2.所有的菜单a标签是需要menu-item的calss类名
-       *  3.点击菜单时用toggleClass
-       *  3.点击菜单时用slideToggle
-       *  4.左侧菜单需要添加href属性(链接地址)
+       *  1. 所有的目录a标签不会有menu-item的class类名
+       *  2. 所有的菜单a标签是需要menu-item的calss类名
+       *  3. 点击菜单时用toggleClass
+       *  3. 点击菜单时用slideToggle
+       *  4. 左侧菜单需要添加href属性(链接地址)
        *  5. tab菜单切换需要data-id,它的值取的是左侧菜单的href的值
-       *  6.$().each是通过return false跳出循环
+       *  6. $().each是通过return false跳出循环
        * **/
 
       /**
@@ -173,6 +173,14 @@
         1.点击左侧菜单,menu-item进行切换,menu-tab进行切换, iframe进行切换
         2.点击menu-tab,menu-tab进行切换,iframe进行切换
         3.点击关闭tab, menu-tab进行切换,iframe进行切换 
+        4.需要有data-id值,该值来自于左边菜单的href值
+      **/
+
+      /**
+        iframe标签
+        1. name属性的值来自左边菜单的data-index的值
+        2. 需要给每个iframe添加class="iframe",因为后面都是通过该类名来获取iframe元素的
+        3. 需要有data-id值,该值来自于左边菜单的href值,tab选项卡的值的也是来自左边菜单的href值      
       **/
 
 
