@@ -150,10 +150,9 @@
           <div class="tag-ctrl">
             <span>页签操作</span>
             <ul class="dropdown-menu">
-                <li><a class="tab-close-current" href="javascript:void();">关闭当前</a></li>
-                <li><a class="tab-close-other" href="javascript:void();">关闭其他</a></li>
-                <li><a class="tab-close-all" href="javascript:void();">全部关闭</a></li>
-                <li><a class="tab-max-current" href="javascript:void();">全屏显示</a></li>
+                <li><a class="tab-close-current" href="javascript:;">关闭当前</a></li>
+                <li><a class="tab-close-other" href="javascript:;">关闭其他</a></li>
+                <li><a class="tab-close-all" href="javascript:;">全部关闭</a></li>
             </ul>
           </div>
         </div>
@@ -359,6 +358,29 @@
       }
 
       $('.content-tabs .tabs-inner').on('click', '.menu-tab i', closeTab)
+
+      // 8.页签操作
+
+      // 8.1 关闭当前的tab标签
+      $('.tab-close-current').on('click', function() {
+        $('.menu-tab.active>i').click()
+      })
+
+      // 8.2 关闭其他的tab标签
+      $('.tab-close-other').on('click', function() {
+        // 去掉默认的和当前的
+        $('.menu-tab').not('.active').not(':first').each(function() {
+          $(this).find('i').click()
+        })
+      })
+
+      // 8.3 全部关闭
+      $('.tab-close-all').on('click', function() {
+        // 去掉默认的
+        $('.menu-tab').not(':first').each(function() {
+          $(this).find('i').click()
+        })
+      })
     </script>
   </body>
 </html>
