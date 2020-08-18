@@ -226,6 +226,7 @@
   position: absolute;
   top: 0;
   right: 0;
+  background: #fff;
 }
 .wrapper .page-wrapper .content-tabs .tag-ctrl > span {
   height: 40px;
