@@ -25,7 +25,7 @@
           </span>
         </div>
         <ul class="menu">
-          <li class="level1">
+          <!-- <li class="level1">
             <a href="index.html" class="menu-item">
               <i class="fa fa-gear"></i>
               <span class="nav-label">首页</span>
@@ -111,7 +111,36 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li> -->
+
+          <script id="menu-template" type="text/html">
+            {{ each $data }}
+              {{ if $value.children }}
+              <li class="level1" class="level1">
+                <a href="#">
+                  <i class="fa fa-video-camera"></i>
+                  <span class="nav-label">{{ $value.name }}</span>
+                  <span class="arrow arrow-left"></span>
+                </a>
+                <ul class="level2">
+                  {{ each $value.children as item i }}
+                    <a href="{{ item.url }}" class="menu-item">
+                      <i class="fa fa-address-card"></i>
+                      <span class="nav-label">{{ item.name }}</span>
+                    </a>
+                  {{ /each }}
+                </ul>
+              </li>
+              {{ else }}
+              <li class="level1">
+                <a href="{{ $value.url }}" class="menu-item">
+                  <i class="fa fa-gear"></i>
+                  <span class="nav-label">{{ $value.name }}</span>
+                </a>
+              </li>
+            {{ /if }}
+            {{ /each }}
+          </script>
         </ul>
       </div>
       <div class="page-wrapper">
@@ -185,6 +214,7 @@
       </div>
     </div>
     <script src="js/jquery.js"></script>
+    <script src="js/template-web.js"></script>
     <script>
       /**
        *  注意:
@@ -227,6 +257,16 @@
           --1.tab-right  // 查看右侧隐藏的tab选项卡
       **/
 
+      $(function() {
+        $.ajax({
+          url: './data/menu.json',
+          type: 'get',
+          success: function(res) {
+            let html = template('menu-template', res)
+            $('.menu').html(html)
+          }
+        })
+      })
       // 1.菜单的折叠和展开
       $('.fold-btn').toggle(
         function () {
@@ -240,7 +280,7 @@
       // 2.左侧菜单
       // 注意这个地方选中的是.level1 > a
       // 不能直接选中 .level1 ,否则点击.level的子项菜单也就折叠
-      $('.navbar .menu .level1 > a').click(function () {
+      $('.navbar .menu').on('click', '.level1 > a', function() {
         // 1.当前菜单高亮，其他不高亮
         // $(this).parent().addClass('active').siblings().removeClass('active')
 
@@ -308,7 +348,8 @@
       }
 
       // 5.给左侧菜单向添加单击事件
-      $('.menu-item').on('click', creataTab)
+      // 动态添加的元素需要事件委托来绑定事件处理函数
+      $('.menu').on('click', '.menu-item', creataTab)
 
       // 6.点击tab选项卡
       function activeTab() {
