@@ -233,23 +233,26 @@
           top: 0;
         }
       }
-      .tabs-inner {
+      .menu-tab-content {
+        margin-left: 40px;
         height: 100%;
         display: flex;
-        margin-left: 40px;
-        a.menu-tab {
-          padding: 0 15px;
-          @include center();
-          flex-shrink: 0; // 防止子元素被压缩
-          border-right: 1px solid #eee;
-          > i {
-            color: #ccc;
-            margin-left: 4px;
-            font-size: 13px;
-          }
-          &.active {
-            background: #eaedf1;
-            color: #23508e;
+        .tabs-inner {
+          display: flex;
+          a.menu-tab {
+            padding: 0 15px;
+            @include center();
+            flex-shrink: 0; // 防止子元素被压缩
+            border-right: 1px solid #eee;
+            > i {
+              color: #ccc;
+              margin-left: 4px;
+              font-size: 13px;
+            }
+            &.active {
+              background: #eaedf1;
+              color: #23508e;
+            }
           }
         }
       }
