@@ -144,9 +144,22 @@
           </ul>
         </div>
         <div class="content-tabs">
-          <div class="tabs-inner"></div>
+          <div class="tabs-inner">
+            <a href="javascript:;" class="active menu-tab" data-id="index.html">首页</a>
+          </div>
+          <div class="tag-ctrl">
+            <span>页签操作</span>
+            <ul class="dropdown-menu">
+                <li><a class="tab-close-current" href="javascript:;">关闭当前</a></li>
+                <li><a class="tab-close-other" href="javascript:;">关闭其他</a></li>
+                <li><a class="tab-close-all" href="javascript:;">全部关闭</a></li>
+            </ul>
+          </div>
         </div>
-        <div class="main-content"></div>
+        <div class="main-content">
+          <iframe class="iframe" name="iframe0" width="100%" height="100%" data-id="index.html"
+ src="index.html" frameborder="0" seamless></iframe>
+        </div>
         <div class="footer"></div>
       </div>
     </div>
@@ -154,13 +167,13 @@
     <script>
       /**
        *  注意:
-       *  1.所有的目录a标签不会有menu-item的class类名
-       *  2.所有的菜单a标签是需要menu-item的calss类名
-       *  3.点击菜单时用toggleClass
-       *  3.点击菜单时用slideToggle
-       *  4.左侧菜单需要添加href属性(链接地址)
+       *  1. 所有的目录a标签不会有menu-item的class类名
+       *  2. 所有的菜单a标签是需要menu-item的calss类名
+       *  3. 点击菜单时用toggleClass
+       *  3. 点击菜单时用slideToggle
+       *  4. 左侧菜单需要添加href属性(链接地址)
        *  5. tab菜单切换需要data-id,它的值取的是左侧菜单的href的值
-       *  6.$().each是通过return false跳出循环
+       *  6. $().each是通过return false跳出循环
        * **/
 
       /**
@@ -168,6 +181,14 @@
         1.点击左侧菜单,menu-item进行切换,menu-tab进行切换, iframe进行切换
         2.点击menu-tab,menu-tab进行切换,iframe进行切换
         3.点击关闭tab, menu-tab进行切换,iframe进行切换 
+        4.需要有data-id值,该值来自于左边菜单的href值
+      **/
+
+      /**
+        iframe标签
+        1. name属性的值来自左边菜单的data-index的值
+        2. 需要给每个iframe添加class="iframe",因为后面都是通过该类名来获取iframe元素的
+        3. 需要有data-id值,该值来自于左边菜单的href值,tab选项卡的值的也是来自左边菜单的href值      
       **/
 
 
@@ -337,6 +358,29 @@
       }
 
       $('.content-tabs .tabs-inner').on('click', '.menu-tab i', closeTab)
+
+      // 8.页签操作
+
+      // 8.1 关闭当前的tab标签
+      $('.tab-close-current').on('click', function() {
+        $('.menu-tab.active>i').click()
+      })
+
+      // 8.2 关闭其他的tab标签
+      $('.tab-close-other').on('click', function() {
+        // 去掉默认的和当前的
+        $('.menu-tab').not('.active').not(':first').each(function() {
+          $(this).find('i').click()
+        })
+      })
+
+      // 8.3 全部关闭
+      $('.tab-close-all').on('click', function() {
+        // 去掉默认的
+        $('.menu-tab').not(':first').each(function() {
+          $(this).find('i').click()
+        })
+      })
     </script>
   </body>
 </html>
