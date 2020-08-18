@@ -223,6 +223,16 @@
         menu-item的href - menu-tab的data-id  iframe的data-id 
       **/
 
+      /**
+        tab选项卡dom层级结构
+        --0.content-tabs
+          --1.tab-left  // 查看左侧隐藏的tab选项卡
+          --1.menu-tab-content // 存放tab选项卡的地方
+            --2.tabs-inner // 实际上滚动的是该元素(无缝滚动原理一样)
+              3.--menu-tab // 每一个tab选项卡
+          --1.tab-right  // 查看右侧隐藏的tab选项卡
+      **/
+
       // 1.菜单的折叠和展开
       $('.fold-btn').toggle(
         function () {
