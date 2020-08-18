@@ -257,11 +257,11 @@
           --1.tab-right  // 查看右侧隐藏的tab选项卡
       **/
 
-      $(function() {
+      $(function () {
         $.ajax({
           url: './data/menu.json',
           type: 'get',
-          success: function(res) {
+          success: function (res) {
             let html = template('menu-template', res)
             $('.menu').html(html)
           }
@@ -280,7 +280,7 @@
       // 2.左侧菜单
       // 注意这个地方选中的是.level1 > a
       // 不能直接选中 .level1 ,否则点击.level的子项菜单也就折叠
-      $('.navbar .menu').on('click', '.level1 > a', function() {
+      $('.navbar .menu').on('click', '.level1 > a', function () {
         // 1.当前菜单高亮，其他不高亮
         // $(this).parent().addClass('active').siblings().removeClass('active')
 
