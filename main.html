@@ -148,8 +148,10 @@
           <button class="roll-btn tab-left">
             <i class="fa fa-backward"></i>
           </button>
-          <div class="tabs-inner">
-            <a href="javascript:;" class="active menu-tab" data-id="index.html">首页</a>
+          <div class="menu-tab-content">
+            <div class="tabs-inner">
+              <a href="javascript:;" class="active menu-tab" data-id="index.html">首页</a>
+            </div>
           </div>
           <!-- 右移按钮 -->
           <button class="roll-btn tab-right">
@@ -273,7 +275,7 @@
           let str = `<a href="javascript:;" class="active menu-tab" data-id="${href}">${tabName}<i class="fa fa-times-circle"></i></a>`
           // 移除其他tab选项卡的active样式
           $('.menu-tab').removeClass('active')
-          $('.content-tabs .tabs-inner').append(str)
+          $('.content-tabs .menu-tab-content .tabs-inner').append(str)
           // 添加选项卡对应的iframe
           let str1 = `<iframe class="iframe" name="iframe${index}" width="100%" height="100%" frameborder="0" src="${href}" data-id="${href}" seamless></iframe>`
           $('.main-content').find('iframe.iframe').hide()
@@ -303,7 +305,7 @@
         }
       }
 
-      $('.content-tabs .tabs-inner').on('click', '.menu-tab', activeTab)
+      $('.content-tabs .menu-tab-content .tabs-inner').on('click', '.menu-tab', activeTab)
 
       // 7.关闭选项卡
       function closeTab() {
@@ -365,7 +367,7 @@
         }
       }
 
-      $('.content-tabs .tabs-inner').on('click', '.menu-tab i', closeTab)
+      $('.content-tabs .menu-tab-content .tabs-inner').on('click', '.menu-tab i', closeTab)
 
       // 8.页签操作
 
@@ -389,6 +391,29 @@
           $(this).find('i').click()
         })
       })
+
+      // 9.
+      function scrollToTab() {
+        let eles = $('.content-tabs').children().not('.menu-tab-content')
+        // 获取非tab选项卡其他元素的总宽度
+        let w = calSumWidth(eles)
+        // tab选项卡显示的区域的
+        let w2 = $('.content-tabs').outerWidth(true) - w
+        // 实际需要滚动的距离
+        let scrollW = 0
+        console.log(w)
+        console.log(w2)
+      }
+      $('.tab-left').on('click', scrollToTab)
+
+      // 计算元素集合的总宽度
+      function calSumWidth(elements) {
+        let width = 0
+        $(elements).each(function() {
+          width += $(this).outerWidth(true) // 包含margin的宽度
+        })
+        return width
+      }
     </script>
   </body>
 </html>
