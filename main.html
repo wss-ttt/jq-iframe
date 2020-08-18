@@ -158,7 +158,24 @@
        *  2.所有的菜单a标签是需要menu-item的calss类名
        *  3.点击菜单时用toggleClass
        *  3.点击菜单时用slideToggle
+       *  4.左侧菜单需要添加href属性(链接地址)
+       *  5. tab菜单切换需要data-id,它的值取的是左侧菜单的href的值
+       *  6.$().each是通过return false跳出循环
        * **/
+
+      /**
+        tab切换的地方
+        1.点击左侧菜单,menu-item进行切换,menu-tab进行切换, iframe进行切换
+        2.点击menu-tab,menu-tab进行切换,iframe进行切换
+        3.点击关闭tab, menu-tab进行切换,iframe进行切换 
+      **/
+
+
+      /**
+        关联关系:
+        menu-item的href - menu-tab的data-id  iframe的data-id 
+      **/
+
       // 1.菜单的折叠和展开
       $('.fold-btn').toggle(
         function () {
@@ -207,19 +224,31 @@
         // 1.需要判断tab是否已经存在，如果存在了就不需要创建了
         $('.menu-tab').each(function() {
           if($(this).data('id') === href) {
-            // 让当前的tab高亮
+            // 当前tab选项卡高亮
             $(this).addClass('active').siblings().removeClass('active')
             flag = false
             return false // 跳出循环
           }
         })
+        // 当前对应的iframe高亮
+        $('.main-content iframe.iframe').each(function() {
+          if($(this).data('id') === href) {
+            $(this).show().siblings().hide()
+            return false
+          }
+        })
 
         // 2.需要创建tab
         if(flag) {
+          // 添加tab选项卡
           let str = `<a href="javascript:;" class="active menu-tab" data-id="${href}">${tabName}<i class="fa fa-times-circle"></i></a>`
-          // 去掉其他tab的active样式
+          // 移除其他tab选项卡的active样式
           $('.menu-tab').removeClass('active')
           $('.content-tabs .tabs-inner').append(str)
+          // 添加选项卡对应的iframe
+          let str1 = `<iframe class="iframe" name="iframe${index}" width="100%" height="100%" frameborder="0" src="${href}" data-id="${href}" seamless></iframe>`
+          $('.main-content').find('iframe.iframe').hide()
+          $('.main-content').append(str1)
         }
 
         // 3.防止a链接跳转
@@ -228,6 +257,86 @@
 
       // 5.给左侧菜单向添加单击事件
       $('.menu-item').on('click', creataTab)
+
+      // 6.点击tab选项卡
+      function activeTab() {
+        if(!$(this).hasClass('active')) {
+          let currentId = $(this).data('id')
+          // 当前高亮
+          $(this).addClass('active').siblings().removeClass('active')
+          // 当前对应的iframe高亮
+          $('.main-content iframe.iframe').each(function() {
+            if($(this).data('id') === currentId) {
+              $(this).show().siblings().hide()
+              return false
+            }
+          })
+        }
+      }
+
+      $('.content-tabs .tabs-inner').on('click', '.menu-tab', activeTab)
+
+      // 7.关闭选项卡
+      function closeTab() {
+        let closeTabId = $(this).parent().data('id')
+        // 如果当前元素处在激活状态
+        if($(this).parent().hasClass('active')) {
+          // 如果当前元素后面有同辈元素
+          if($(this).parent().next().size()) {
+            let activeId = $(this).parent().next().data('id')
+            $(this).parent().next().addClass('active')
+            $('.main-content iframe.iframe').each(function() {
+              if($(this).data('id') === activeId) {
+                $(this).show().siblings().hide()
+                return false
+              }
+            })
+
+            // 移除当前tab选项卡
+            $(this).parent().get(0).remove() // 使用的是原生的remove方法进行删除
+            // 移除对应的iframe
+            $('.main-content iframe.iframe').each(function() {
+              if($(this).data('id') === closeTabId) {
+                $(this).remove()
+                return false
+              }
+            })
+          } else {
+            // 如果当前元素的后面没有同辈元素
+            let activeId = $(this).parent().prev().data('id')
+            $(this).parent().prev().addClass('active')
+            $('.main-content iframe.iframe').each(function() {
+              if($(this).data('id') === activeId) {
+                $(this).show().siblings().hide()
+                return false
+              }
+            })
+
+            // 移出当前选项卡
+            $(this).parent().get(0).remove() // 使用的是原生的remove方法进行删除
+            // 移除对应的iframe
+            $('.main-content iframe.iframe').each(function() {
+              if($(this).data('id') === closeTabId) {
+                $(this).remove()
+                return false
+              }
+            })
+          }
+          
+        } else {
+          // 如果当前元素不存在激活状态下
+          $(this).parent().get(0).remove()
+          // 移除对应的iframe
+          $('.main-content iframe.iframe').each(function() {
+            if($(this).data('id') === closeTabId) {
+              $(this).remove()
+              return false
+            }
+          })
+        }
+      }
+
+      $('.content-tabs .tabs-inner').on('click', '.menu-tab i', closeTab)
     </script>
   </body>
 </html>
