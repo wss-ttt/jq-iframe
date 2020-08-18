@@ -150,7 +150,12 @@
           </button>
           <div class="menu-tab-content">
             <div class="tabs-inner">
-              <a href="javascript:;" class="active menu-tab" data-id="index.html">首页</a>
+              <a
+                href="javascript:;"
+                class="active menu-tab"
+                data-id="index.html"
+                >首页</a
+              >
             </div>
           </div>
           <!-- 右移按钮 -->
@@ -160,15 +165,27 @@
           <div class="tag-ctrl">
             <span>页签操作</span>
             <ul class="dropdown-menu">
-                <li><a class="tab-close-current" href="javascript:;">关闭当前</a></li>
-                <li><a class="tab-close-other" href="javascript:;">关闭其他</a></li>
-                <li><a class="tab-close-all" href="javascript:;">全部关闭</a></li>
+              <li>
+                <a class="tab-close-current" href="javascript:;">关闭当前</a>
+              </li>
+              <li>
+                <a class="tab-close-other" href="javascript:;">关闭其他</a>
+              </li>
+              <li><a class="tab-close-all" href="javascript:;">全部关闭</a></li>
             </ul>
           </div>
         </div>
         <div class="main-content">
-          <iframe class="iframe" name="iframe0" width="100%" height="100%" data-id="index.html"
- src="index.html" frameborder="0" seamless></iframe>
+          <iframe
+            class="iframe"
+            name="iframe0"
+            width="100%"
+            height="100%"
+            data-id="index.html"
+            src="index.html"
+            frameborder="0"
+            seamless
+          ></iframe>
         </div>
         <div class="footer"></div>
       </div>
@@ -201,7 +218,6 @@
         3. 需要有data-id值,该值来自于左边菜单的href值,tab选项卡的值的也是来自左边菜单的href值      
       **/
 
-
       /**
         关联关系:
         menu-item的href - menu-tab的data-id  iframe的data-id 
@@ -227,7 +243,6 @@
         // tips: 002-这里将addClass换成toggleClass
         $(this).parent().toggleClass('active').siblings().removeClass('active')
 
-
         // 2.点击当前菜单的二级菜单展开或者折叠
         $(this).next().slideToggle()
 
@@ -236,9 +251,9 @@
       })
 
       // 3.通过遍历给菜单向添加data-index
-      
-      $('.menu-item').each(function(index,value) {
-        if(!$(this).attr('data-index')) {
+
+      $('.menu-item').each(function (index, value) {
+        if (!$(this).attr('data-index')) {
           $(this).attr('data-index', index)
         }
       })
@@ -249,28 +264,29 @@
         let tabName = $.trim($(this).text()) // 获取点击的菜单名称
         let href = $(this).attr('href') // 获取地址
         let index = $(this).data('index') // 获取data-index值
-        
-        if(!href) return // 如果不存在链接地址，直接返回
-        
+
+        if (!href) return // 如果不存在链接地址，直接返回
+
         // 1.需要判断tab是否已经存在，如果存在了就不需要创建了
-        $('.menu-tab').each(function() {
-          if($(this).data('id') === href) {
+        $('.menu-tab').each(function () {
+          if ($(this).data('id') === href) {
             // 当前tab选项卡高亮
             $(this).addClass('active').siblings().removeClass('active')
+            scrollToTab(this)
             flag = false
             return false // 跳出循环
           }
         })
         // 当前对应的iframe高亮
-        $('.main-content iframe.iframe').each(function() {
-          if($(this).data('id') === href) {
+        $('.main-content iframe.iframe').each(function () {
+          if ($(this).data('id') === href) {
             $(this).show().siblings().hide()
             return false
           }
         })
 
         // 2.需要创建tab
-        if(flag) {
+        if (flag) {
           // 添加tab选项卡
           let str = `<a href="javascript:;" class="active menu-tab" data-id="${href}">${tabName}<i class="fa fa-times-circle"></i></a>`
           // 移除其他tab选项卡的active样式
@@ -280,6 +296,7 @@
           let str1 = `<iframe class="iframe" name="iframe${index}" width="100%" height="100%" frameborder="0" src="${href}" data-id="${href}" seamless></iframe>`
           $('.main-content').find('iframe.iframe').hide()
           $('.main-content').append(str1)
+          scrollToTab($('.menu-tab.active'))
         }
 
         // 3.防止a链接跳转
@@ -291,33 +308,38 @@
 
       // 6.点击tab选项卡
       function activeTab() {
-        if(!$(this).hasClass('active')) {
+        if (!$(this).hasClass('active')) {
           let currentId = $(this).data('id')
           // 当前高亮
           $(this).addClass('active').siblings().removeClass('active')
           // 当前对应的iframe高亮
-          $('.main-content iframe.iframe').each(function() {
-            if($(this).data('id') === currentId) {
+          $('.main-content iframe.iframe').each(function () {
+            if ($(this).data('id') === currentId) {
               $(this).show().siblings().hide()
               return false
             }
           })
+          scrollToTab(this)
         }
       }
 
-      $('.content-tabs .menu-tab-content .tabs-inner').on('click', '.menu-tab', activeTab)
+      $('.content-tabs .menu-tab-content .tabs-inner').on(
+        'click',
+        '.menu-tab',
+        activeTab
+      )
 
       // 7.关闭选项卡
       function closeTab() {
         let closeTabId = $(this).parent().data('id')
         // 如果当前元素处在激活状态
-        if($(this).parent().hasClass('active')) {
+        if ($(this).parent().hasClass('active')) {
           // 如果当前元素后面有同辈元素
-          if($(this).parent().next().size()) {
+          if ($(this).parent().next().size()) {
             let activeId = $(this).parent().next().data('id')
             $(this).parent().next().addClass('active')
-            $('.main-content iframe.iframe').each(function() {
-              if($(this).data('id') === activeId) {
+            $('.main-content iframe.iframe').each(function () {
+              if ($(this).data('id') === activeId) {
                 $(this).show().siblings().hide()
                 return false
               }
@@ -326,8 +348,8 @@
             // 移除当前tab选项卡
             $(this).parent().get(0).remove() // 使用的是原生的remove方法进行删除
             // 移除对应的iframe
-            $('.main-content iframe.iframe').each(function() {
-              if($(this).data('id') === closeTabId) {
+            $('.main-content iframe.iframe').each(function () {
+              if ($(this).data('id') === closeTabId) {
                 $(this).remove()
                 return false
               }
@@ -336,8 +358,8 @@
             // 如果当前元素的后面没有同辈元素
             let activeId = $(this).parent().prev().data('id')
             $(this).parent().prev().addClass('active')
-            $('.main-content iframe.iframe').each(function() {
-              if($(this).data('id') === activeId) {
+            $('.main-content iframe.iframe').each(function () {
+              if ($(this).data('id') === activeId) {
                 $(this).show().siblings().hide()
                 return false
               }
@@ -346,20 +368,19 @@
             // 移出当前选项卡
             $(this).parent().get(0).remove() // 使用的是原生的remove方法进行删除
             // 移除对应的iframe
-            $('.main-content iframe.iframe').each(function() {
-              if($(this).data('id') === closeTabId) {
+            $('.main-content iframe.iframe').each(function () {
+              if ($(this).data('id') === closeTabId) {
                 $(this).remove()
                 return false
               }
             })
           }
-          
         } else {
           // 如果当前元素不存在激活状态下
           $(this).parent().get(0).remove()
           // 移除对应的iframe
-          $('.main-content iframe.iframe').each(function() {
-            if($(this).data('id') === closeTabId) {
+          $('.main-content iframe.iframe').each(function () {
+            if ($(this).data('id') === closeTabId) {
               $(this).remove()
               return false
             }
@@ -367,49 +388,93 @@
         }
       }
 
-      $('.content-tabs .menu-tab-content .tabs-inner').on('click', '.menu-tab i', closeTab)
+      $('.content-tabs .menu-tab-content .tabs-inner').on(
+        'click',
+        '.menu-tab i',
+        closeTab
+      )
 
       // 8.页签操作
 
       // 8.1 关闭当前的tab标签
-      $('.tab-close-current').on('click', function() {
+      $('.tab-close-current').on('click', function () {
         $('.menu-tab.active>i').click()
       })
 
       // 8.2 关闭其他的tab标签
-      $('.tab-close-other').on('click', function() {
+      $('.tab-close-other').on('click', function () {
         // 去掉默认的和当前的
-        $('.menu-tab').not('.active').not(':first').each(function() {
-          $(this).find('i').click()
-        })
+        $('.menu-tab')
+          .not('.active')
+          .not(':first')
+          .each(function () {
+            $(this).find('i').click()
+          })
       })
 
       // 8.3 全部关闭
-      $('.tab-close-all').on('click', function() {
+      $('.tab-close-all').on('click', function () {
         // 去掉默认的
-        $('.menu-tab').not(':first').each(function() {
-          $(this).find('i').click()
-        })
+        $('.menu-tab')
+          .not(':first')
+          .each(function () {
+            $(this).find('i').click()
+          })
       })
 
       // 9.
-      function scrollToTab() {
+      function scrollToTab(element) {
+        let marginLeftVal = calSumWidth($(element).prevAll())
+        let marginRightVal = calSumWidth($(element).nextAll())
         let eles = $('.content-tabs').children().not('.menu-tab-content')
         // 获取非tab选项卡其他元素的总宽度
-        let w = calSumWidth(eles)
+        let tabOuterWidth = calSumWidth(eles)
         // tab选项卡显示的区域的
-        let w2 = $('.content-tabs').outerWidth(true) - w
+        let visibleWidth = $('.content-tabs').outerWidth(true) - tabOuterWidth
+
+        let scrollVal = 0
         // 实际需要滚动的距离
-        let scrollW = 0
-        console.log(w)
-        console.log(w2)
+        if ($('.tabs-inner').outerWidth() < visibleWidth) {
+          scrollVal = 0
+        } else if (
+          marginRightVal <=
+          visibleWidth -
+            $(element).outerWidth(true) -
+            $(element).next().outerWidth(true)
+        ) {
+          if (
+            visibleWidth - $(element).next().outerWidth(true) >
+            marginRightVal
+          ) {
+            scrollVal = marginLeftVal
+            var tabElement = element
+            while (
+              scrollVal - $(tabElement).outerWidth() >
+              $('.tabs-inner').outerWidth() - visibleWidth
+            ) {
+              scrollVal -= $(tabElement).prev().outerWidth()
+              tabElement = $(tabElement).prev()
+            }
+          }
+        } else if (
+          marginLeftVal >
+          visibleWidth -
+            $(element).outerWidth(true) -
+            $(element).prev().outerWidth(true)
+        ) {
+          scrollVal = marginLeftVal - $(element).prev().outerWidth(true)
+        }
+        $('.tabs-inner').animate({
+          marginLeft: 0 - scrollVal + 'px'
+        }, 'fast')
       }
+
       $('.tab-left').on('click', scrollToTab)
 
       // 计算元素集合的总宽度
       function calSumWidth(elements) {
         let width = 0
-        $(elements).each(function() {
+        $(elements).each(function () {
           width += $(this).outerWidth(true) // 包含margin的宽度
         })
         return width
