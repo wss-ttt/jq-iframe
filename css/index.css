@@ -175,8 +175,9 @@
 }
 .wrapper .page-wrapper .content-tabs {
   position: relative;
-  height: 40px;
+  height: 42px;
   background: #fafafa;
+  border-bottom: 2px solid #e7eaec;
 }
 .wrapper .page-wrapper .content-tabs .roll-btn {
   width: 40px;
@@ -274,10 +275,16 @@
   display: block;
 }
 .wrapper .page-wrapper .main-content {
-  height: calc(100% - 50px - 40px - 40px);
-  background: #1acd7e;
+  height: calc(100% - 50px - 42px - 40px);
+  background: #fff;
 }
 .wrapper .page-wrapper .footer {
   height: 40px;
   background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 10px;
+  border-top: 1px solid #e7eaec;
 }

@@ -212,8 +212,9 @@
     }
     .content-tabs {
       position: relative;
-      height: 40px;
+      height: 42px;
       background: #fafafa;
+      border-bottom: 2px solid #e7eaec;
       .roll-btn {
         width: 40px;
         height: 40px;
@@ -307,12 +308,16 @@
       }
     }
     .main-content {
-      height: calc(100% - 50px - 40px - 40px);
-      background: #1acd7e;
+      height: calc(100% - 50px - 42px - 40px);
+      background: #fff;
     }
     .footer {
       height: 40px;
       background: #fff;
+      @include  center();
+      justify-content: flex-end;
+      padding: 0 10px;
+      border-top: 1px solid #e7eaec;
     }
   }
 }
