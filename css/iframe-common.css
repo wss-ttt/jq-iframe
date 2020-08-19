@@ -1,0 +1,20 @@
+/* 所有的iframe相同的样式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+}
+body {
+  background: #f3f3f4;
+  padding: 15px;
+}
+.container {
+  height: 100%;
+  background: #fff;
+  box-shadow: 1px 1px 3px rgba(0,0,0,.2);
+  border-radius: 4px;
+  padding: 15px;
+}
