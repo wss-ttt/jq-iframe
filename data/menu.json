@@ -61,10 +61,11 @@
     "id": 10,
     "name": "其他",
     "url": "#",
+    "icon": "fa fa-home",
     "children": [{
       "id": 11,
-      "name": "项目介绍",
-      "url": "system/introduce.html",
+      "name": "关于我们",
+      "url": "system/aboutus.html",
       "icon": "fa fa-camera-retro"
     }]
   }
