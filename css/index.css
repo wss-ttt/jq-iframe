@@ -178,6 +178,7 @@
   height: 42px;
   background: #fafafa;
   border-bottom: 2px solid #e7eaec;
+  display: flex;
 }
 .wrapper .page-wrapper .content-tabs .roll-btn {
   width: 40px;
@@ -186,20 +187,15 @@
   background: #fff;
   border: 0;
   outline: none;
-  position: absolute;
 }
 .wrapper .page-wrapper .content-tabs .roll-btn.tab-left {
   border-right: 1px solid #eee;
-  left: 0;
-  top: 0;
 }
 .wrapper .page-wrapper .content-tabs .roll-btn.tab-right {
   border-left: 1px solid #eee;
-  right: 100px;
-  top: 0;
 }
 .wrapper .page-wrapper .content-tabs .menu-tab-content {
-  margin-left: 40px;
+  flex: 1;
   height: 100%;
   display: flex;
   overflow: hidden;
@@ -225,9 +221,6 @@
   color: #23508e;
 }
 .wrapper .page-wrapper .content-tabs .tag-ctrl {
-  position: absolute;
-  top: 0;
-  right: 0;
   background: #fff;
 }
 .wrapper .page-wrapper .content-tabs .tag-ctrl > span {

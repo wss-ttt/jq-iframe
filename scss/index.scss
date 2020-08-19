@@ -215,6 +215,7 @@
       height: 42px;
       background: #fafafa;
       border-bottom: 2px solid #e7eaec;
+      display: flex; // 使用弹性布局
       .roll-btn {
         width: 40px;
         height: 40px;
@@ -222,20 +223,15 @@
         background: #fff;
         border: 0;
         outline: none;
-        position: absolute;
         &.tab-left {
           border-right: 1px solid #eee;
-          left: 0;
-          top: 0;
         }
         &.tab-right {
           border-left: 1px solid #eee;
-          right: 100px;
-          top: 0;
         }
       }
       .menu-tab-content {
-        margin-left: 40px;
+        flex: 1;
         height: 100%;
         display: flex;
         overflow: hidden;
@@ -259,9 +255,6 @@
         }
       }
       .tag-ctrl {
-        position: absolute;
-        top: 0;
-        right: 0;
         background: #fff;
         >span {
           height: 40px;
