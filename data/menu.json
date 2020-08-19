@@ -2,27 +2,32 @@
   {
     "id": 1,
     "name": "首页",
-    "url": "index.html"
+    "url": "index.html",
+    "icon": "fa fa-gear"
   },
   {
     "id": 2,
     "name": "系统管理",
     "url": "#",
+    "icon": "fa fa-video-camera",
     "children": [
       {
         "id": 3,
         "name": "用户管理",
-        "url": "system/user.html"
+        "url": "system/user.html",
+        "icon": "fa fa-address-card"
       },
       {
         "id": 4,
         "name": "角色管理",
-        "url": "system/role.html"
+        "url": "system/role.html",
+        "icon": "fa fa-address-card"
       },
       {
         "id": 5,
         "name": "部门管理",
-        "url": "system/dept.html"
+        "url": "system/dept.html",
+        "icon": "fa fa-address-card"
       }
     ]
   },
@@ -30,22 +35,37 @@
     "id": 6,
     "name": "系统监控",
     "url": "#",
+    "icon": "fa fa-video-camera",
     "children": [
       {
         "id": 7,
         "name": "在线用户",
-        "url": "system/online.html"
+        "url": "system/online.html",
+        "icon": "fa fa-address-card"
       },
       {
         "id": 8,
         "name": "定时任务",
-        "url": "system/job.html"
+        "url": "system/job.html",
+        "icon": "fa fa-address-card"
       },
       {
         "id": 9,
         "name": "数据监控",
-        "url": "system/monitor.html"
+        "url": "system/monitor.html",
+        "icon": "fa fa-address-card"
       }
     ]
+  },
+  {
+    "id": 10,
+    "name": "其他",
+    "url": "#",
+    "children": [{
+      "id": 11,
+      "name": "项目介绍",
+      "url": "system/introduce.html",
+      "icon": "fa fa-camera-retro"
+    }]
   }
 ]
