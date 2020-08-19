@@ -286,19 +286,19 @@
       // 2.左侧菜单
       // 注意这个地方选中的是.level1 > a
       // 不能直接选中 .level1 ,否则点击.level的子项菜单也就折叠
-      // $('.navbar .menu').on('click', '.level1 > a', function () {
-      //   // 1.当前菜单高亮，其他不高亮
-      //   // $(this).parent().addClass('active').siblings().removeClass('active')
+      $('.navbar .menu').on('click', '.level1 > a', function () {
+        // 1.当前菜单高亮，其他不高亮
+        // $(this).parent().addClass('active').siblings().removeClass('active')
 
-      //   // tips: 002-这里将addClass换成toggleClass
-      //   $(this).parent().toggleClass('active').siblings().removeClass('active')
+        // tips: 002-这里将addClass换成toggleClass
+        $(this).parent().toggleClass('active').siblings().removeClass('active')
 
-      //   // 2.点击当前菜单的二级菜单展开或者折叠
-      //   $(this).next().slideToggle()
+        // 2.点击当前菜单的二级菜单展开或者折叠
+        $(this).next().slideToggle()
 
-      //   // 3.其他的菜单的二级菜单折叠(也就是只会保留一个二级菜单时展开的)
-      //   $(this).parent().siblings().find('.level2').slideUp()
-      // })
+        // 3.其他的菜单的二级菜单折叠(也就是只会保留一个二级菜单时展开的)
+        $(this).parent().siblings().find('.level2').slideUp()
+      })
 
       // 3.通过遍历给菜单向添加data-index
 
