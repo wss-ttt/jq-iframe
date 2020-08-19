@@ -270,14 +270,18 @@
         })
       })
       // 1.菜单的折叠和展开
-      $('.fold-btn').toggle(
+      /* $('.fold-btn').toggle(
         function () {
           $('.wrapper').addClass('fold')
         },
         function () {
           $('.wrapper').removeClass('fold')
         }
-      )
+      ) */
+      // 优化-使用toggleClass来切换侧边菜单的折叠和展开
+      $('.fold-btn').on('click', function() {
+        $('.wrapper').toggleClass('fold')
+      })
 
       // 2.左侧菜单
       // 注意这个地方选中的是.level1 > a
