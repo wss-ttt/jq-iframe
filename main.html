@@ -115,26 +115,28 @@
 
           <script id="menu-template" type="text/html">
             {{ each $data }}
+              <!-- 有二级菜单的 -->
               {{ if $value.children }}
               <li class="level1" class="level1">
                 <a href="#">
-                  <i class="fa fa-video-camera"></i>
+                  <i class="{{ $value.icon }}"></i>
                   <span class="nav-label">{{ $value.name }}</span>
                   <span class="arrow arrow-left"></span>
                 </a>
                 <ul class="level2">
                   {{ each $value.children as item i }}
                     <a href="{{ item.url }}" class="menu-item">
-                      <i class="fa fa-address-card"></i>
+                      <i class="{{ item.icon }}"></i>
                       <span class="nav-label">{{ item.name }}</span>
                     </a>
                   {{ /each }}
                 </ul>
               </li>
               {{ else }}
+              <!-- 没有二级菜单的 -->
               <li class="level1">
                 <a href="{{ $value.url }}" class="menu-item">
-                  <i class="fa fa-gear"></i>
+                  <i class="{{ $value.icon }}"></i>
                   <span class="nav-label">{{ $value.name }}</span>
                 </a>
               </li>
